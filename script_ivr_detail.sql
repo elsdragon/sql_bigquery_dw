@@ -29,5 +29,6 @@ FROM `keepcoding.ivr_calls` calls
 LEFT JOIN `keepcoding.ivr_modules` module
   ON module.ivr_id = calls.ivr_id
 LEFT JOIN `keepcoding.ivr_steps` step
-  ON step.ivr_id = calls.ivr_id
-;
+  ON step.ivr_id = module.ivr_id
+  AND step.module_sequece = module.module_sequece
+ORDER BY calls.ivr_id
